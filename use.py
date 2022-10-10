@@ -17,6 +17,7 @@ def remove_dollor(x:str):
             x=x.replace(x[s-1:e+1],'')
         else:
             x=x.replace(x[s:e],'')
+    return x
 
 def remove_redundant_blank(x:str):
     x=x.strip()
@@ -31,7 +32,7 @@ def remove_item(x:str):
         x=x.replace(r'\item','')
     return x
 
-def remove_ref_cite_textbf(x:str):
+def remove_ref_cite_textbf_textit(x:str):
     pattern="ref\{.*?\}"
     pattern = re.compile(pattern)
     while pattern.search(x)!=None:
@@ -51,6 +52,14 @@ def remove_ref_cite_textbf(x:str):
     while pattern.search(x)!=None:
         (s,e)=pattern.search(x).regs[0]
         x=x.replace(x[s-1:e],x[s+7:e-1])
+
+
+    # #删掉textit 保留内容
+    # pattern="textit\{.*?\}"
+    # pattern = re.compile(pattern)
+    # while pattern.search(x)!=None:
+    #     (s,e)=pattern.search(x).regs[0]
+    #     x=x.replace(x[s-1:e],x[s+7:e-1])
     return x
 
 
