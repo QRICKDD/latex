@@ -11,4 +11,6 @@ data=remove_ref_cite_textbf_textit(data)
 data=remove_dollor(data)
 data=remove_redundant_blank(data)
 
+with open('word','w') as f:
+    f.write(data)
 print(data)
