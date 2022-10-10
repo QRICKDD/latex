@@ -8,6 +8,16 @@ def remove_n_t(x:str):
         x=x.replace('\t','')
     return x
 
+def remove_dollor(x:str):
+    pattern="$.*?$}"
+    pattern = re.compile(pattern)
+    while pattern.search(x)!=None:
+        (s,e)=pattern.search(x).regs[0]
+        if x[e-1]=='$':
+            x=x.replace(x[s-1:e+1],'')
+        else:
+            x=x.replace(x[s:e],'')
+
 def remove_redundant_blank(x:str):
     x=x.strip()
     while x.find('  ')!=-1:
