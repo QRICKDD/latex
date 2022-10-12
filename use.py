@@ -63,6 +63,14 @@ def remove_ref_cite_textbf_textit(x:str):
     while pattern.search(x)!=None:
         (s,e)=pattern.search(x).regs[0]
         x=x.replace(x[s-1:e],x[s+7:e-1])
+
+
+    #删掉emph 保留内容
+    pattern="emph\{.*?\}"
+    pattern = re.compile(pattern)
+    while pattern.search(x)!=None:
+        (s,e)=pattern.search(x).regs[0]
+        x=x.replace(x[s-1:e],x[s+5:e-1])
     return x
 
 
